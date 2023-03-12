@@ -29,7 +29,7 @@ database.pool.connect()
   })
 
 ```
-`dbSetupQuery` is defined in `/backend/database.js`. It's a string with it's value set to the SQL query to create our tables. We import the string into this file using `require()` with the filename in the parenthesis (without the .js extension). 
+`dbSetupQuery` is defined in `/backend/database.js`. It's a string with it's value set to the SQL query to create our tables.
 
 Now that we are sure we are connected to our database, we can start our server.
 ```
