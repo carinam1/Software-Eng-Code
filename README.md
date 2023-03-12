@@ -69,3 +69,11 @@ Where post is the type of request (ex: get, post, put, delete) and '/users' is t
 
 This same functionality can be easily expanded to all the modules we create to easily have a function in a module be triggered by a request to any path.
 
+## Good Resources
+
+- [RESTful APIs Explained](https://youtu.be/-MTSQjw5DrM)
+- [Quick Video on JS Modules](https://www.youtube.com/watch?v=qgRUr-YUk1Q)
+- [Builing a REST API with NodeJS, Express, and PostgreSQL](https://www.youtube.com/watch?v=DihOP19LQdg)
+
+This last video goes over most of what we need to do in our backend. After watching it, I think we should try to organize our code more like how that guy does it. It looks a lot more organized than what I put together.
+
