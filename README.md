@@ -9,7 +9,7 @@ Username: postgres
 Password: password
 Port: 5432 (this should be the default)
 
-^ That info is defined in the `server.js` file, so if you use different info, the backend won't be able to connect to the database.
+^ That info is defined in the `database.js` file, so if you use different info, the backend won't be able to connect to the database.
 
 
 ## Backend Setup
