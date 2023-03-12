@@ -4,7 +4,7 @@
 
 1. The backend is setup to connect with a PostgreSQL database running on your computer. If you're on Mac/Linux and have docker installed, running the `setup_docker.sh` file in the /db folder will do everything for you.
 2. Otherwise, follow a guide for installing PostgreSQL on your computer (it's just a few steps). Then, create a database with the following info:
-Database Name: nuyu_db
+Database Name: postgres
 Username: postgres
 Password: password
 Port: 5432 (this should be the default)
