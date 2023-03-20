@@ -1,0 +1,58 @@
+body {
+    font-family: 'Abel', sans-serif;
+    background-image: url("https://wallpapercave.com/wp/wp5349244.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
+  }
+  
+  .container{
+width: 80%;
+margin: 0 auto;
+  }
+
+  header {
+    background: #000000;
+    opacity: 0.8;
+  }
+
+  header::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .logo{
+    float: left;
+    padding: 10px 0;
+  }
+
+  nav{
+    float: right;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+  }
+
+  nav li {
+    display: inline-block;
+    margin: 0 35px;
+    padding-top: 25px;
+  }
+
+  nav a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppsercase;
+    font-size: 30px;
+  }
+
+  nav a:hover {
+    color: gray
+  }
