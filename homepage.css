@@ -56,3 +56,8 @@ margin: 0 auto;
   nav a:hover {
     color: gray
   }
+
+  .center_image{
+    margin-left: 150px;
+    margin-top: 130px;
+  }
