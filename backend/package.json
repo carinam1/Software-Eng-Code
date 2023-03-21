@@ -1,0 +1,25 @@
+{
+  "name": "nuyu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carinam1/Software-Eng-Code"
+  },
+  "author": "nuyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carinam1/Software-Eng-Code/issues"
+  },
+  "homepage": "https://github.com/carinam1/Software-Eng-Code#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "pg": "^8.10.0"
+  }
+}
