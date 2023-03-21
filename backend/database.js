@@ -3,7 +3,7 @@ var PGUSER = 'deploy'
 var PGDATABASE = 'oscpushserver'
 var config = {
     user: 'postgres', // name of the user account
-    password: 'password',
+    password: 'Bagel12',
     database: 'postgres', // name of the database
     host: 'localhost',
     port: '5432',
@@ -18,6 +18,11 @@ const dbSetupQuery = `
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE
+  );
+  CREATE TABLE IF NOT EXISTS payment (
+    id SERIAL PRIMARY KEY,
+    ccnumber TEXT NOT NULL,
+    cvv TEXT NOT NULL
   )
 `;
 
