@@ -14,7 +14,7 @@ if(fullname != null){ //signup page
     } else if(email.value.length<8){
         alert('Your password must be at least 8 characters long');
     } else if(!tac.checked){
-        alert('You muust agree to our terms and conditions');
+        alert('You must agree to our terms and conditions');
     } else{
         sendData('/users',{
             name: fullname.value,
