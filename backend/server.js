@@ -5,6 +5,7 @@ const database = require('./database');
 const userController = require('./modules/userController');
 const bodyParser = require('body-parser');
 const paymentMethod = require('./modules/paymentMethod');
+const healthMetrics = require('./modules/healthMetrics');
 
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
@@ -39,6 +40,14 @@ app.get('/payment', function(req, res){
 
 app.post('/payment', function(req, res){
   paymentMethod.createPayment(req, res);
+});
+
+app.get('/metrics', function(req, res){
+  healthMetrics.getMetrics(req, res);
+});
+
+app.post('/metrics', function(req, res){
+  healthMetrics.createMetrics(req, res);
 });
 
 app.listen(3000, () => {

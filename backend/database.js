@@ -23,7 +23,12 @@ const dbSetupQuery = `
     id SERIAL PRIMARY KEY,
     ccnumber TEXT NOT NULL,
     cvv TEXT NOT NULL
-  )
+  );
+  CREATE TABLE IF NOT EXISTS metrics (
+    id SERIAL PRIMARY KEY,
+    height TEXT NOT NULL,
+    weight TEXT NOT NULL
+  );
 `;
 
 module.exports = {
