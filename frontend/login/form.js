@@ -21,16 +21,40 @@ if(fullname != null){ //signup page
             email: email.value,
             password: password.value,
             tac: tac.checked
-        })
+        }, (response) => {
+            alert("Thank you for registration, please to access private area");
+            window.location.href = '/Login/login.html';
+
+        }, (errr) => {
+            alert(errr);
+        });
     }
 } else{
     if(!email.value.length || !password.value.length){
         alert('Fill all the inputs')
-        sendData('/users',{
+      
+    } else {
+        sendData('/login',{
             email: email.value,
             password: password.value,
+        },  (response) =>{
+           if(response.token) {
+                localStorage.setItem('token', response.token);
+                checkUserList();
+            }
+        }, (err) => {
+            console.log(err);
         })
     }
 }
 
 })
+
+const checkUserList = () => {
+    // if(localStorage.getItem('token')) {} // if token is there then give access to page using JS
+    sendDataGET('/users', (response) =>{
+       console.log(response);
+    }, (err) => {
+        console.log(err);
+    })
+}
