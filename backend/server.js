@@ -45,6 +45,12 @@ database.pool.connect()
       jsonBodyParser(req, res, () => {
         paymentMethod.createPayment(req, res);
       });
+    } else if (req.url === '/metrics' && req.method === 'GET') {
+        healthMetrics.getMetrics(req, res);
+    } else if (req.url === '/metrics' && req.method === 'POST') {
+      jsonBodyParser(req, res, () => {
+        healthMetrics.createMetrics(req, res);
+      });
     } else if (req.url === '/login_verify' && req.method === 'POST'){
       jsonBodyParser(req, res, () => {
         userController.loginVerify(req, res);
