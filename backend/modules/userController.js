@@ -67,11 +67,25 @@ const bearerHeader = req.headers["authorization"];
     }
 } 
 
-async function getUser(req, res) {
+async function getUsers(req, res) {
     try {
         db.pool.connect(
             async function(err, client, done) {
                 const result = await client.query('SELECT * FROM users');
+                res.json(result.rows);
+            }
+        );
+    }catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+}
+
+async function getUser(userId) {
+    try {
+        db.pool.connect(
+            async function(err, client, done) {
+                const result = await client.query('SELECT * FROM users WHERE id = $1', [userId]);
                 res.json(result.rows);
             }
         );
@@ -102,3 +116,102 @@ async function createUser(req, res) {
     }
 }
 
+async function getUserFriends(userid) {
+    try {
+        db.pool.connect(
+            async function(err, client, done) {
+                const result = await client.query('SELECT * FROM friendship where user1 = $1 or user2 = $1', [userid]);
+                res.json(result.rows);
+            }
+        );
+    }catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+}
+
+function getFriendRequests(userId) {   
+    try {
+        db.pool.connect(
+            async function(err, client, done) {
+                const result = await client.query('SELECT * FROM friendrequests where user1 = $1 or user2 = $1', [userid]);
+                res.json(result.rows);
+            }
+        );
+    }catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }
+  
+function updateFriendRequest(userId, friendId, friendRequestId, status) {
+    
+    const user = getUser(userId);    
+    const friend = getUser(userId);
+    const friendRequests = getFriendRequests(userId);
+
+    if (!user || !friend) {
+      throw new Error("Invalid user or friend ID");
+    }
+
+    if (!friendRequests.includes(friendId)) {
+      throw new Error("No friend request from user.");
+    }
+
+    try {       
+    
+        if(status === 'accepted'){
+
+            db.pool.connect(
+                async function(err, client, done) {
+                    const result = await client.query('INSERT INTO friendship (user1, user2) Values ($1, $2); UPDATE friendrequests set status = $3 where id = $4', [userId, friendId, status, friendRequestId]);
+                    res.json(result.rows);
+                }
+            );
+        }else{         
+
+            db.pool.connect(
+                async function(err, client, done) {
+                    const result = await client.query('UPDATE friendrequests set status = $1 where id = $2', [status, friendRequestId]);
+                    res.json(result.rows);
+                }
+            );
+        }
+
+    }catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }
+
+  function sendFriendRequest(userId, friendId) {   
+    const user = getUser(userId);    
+    const friend = getUser(userId);
+    const userFriends = getUserFriends(userId);   
+    const friendRequests = getFriendRequests(userId);
+
+    if (!user || !friend) {
+      throw new Error("userID not found!");
+    }
+    if (userId == friendId) {
+        throw new Error("Cannot send a friend request to yourself!");
+    }
+    if (userFriends.includes(friendId)) {
+      throw new Error("This user is already your friend!");
+    }
+    if (friendRequests.includes(friendId)) {
+      throw new Error("You have already sent this user a request!");
+    }
+    
+    try {
+        db.pool.connect(
+            async function(err, client, done) {
+                const result = await client.query('INSERT INTO friendrequests (user1, user2, status) Values ($1, $2, "pending")', [userId, friendId]);
+                res.json(result.rows);
+            }
+        );
+    }catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }

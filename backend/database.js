@@ -23,7 +23,18 @@ const dbSetupQuery = `
     id SERIAL PRIMARY KEY,
     ccnumber TEXT NOT NULL,
     cvv TEXT NOT NULL
-  )
+  );
+  CREATE TABLE IF NOT EXISTS friendship (
+    id SERIAL PRIMARY KEY,
+    user1 int NOT NULL,
+    user2 int NOT NULL,
+  );
+  CREATE TABLE IF NOT EXISTS friendrequests (
+    id SERIAL PRIMARY KEY,
+    user1 int NOT NULL,
+    user2 int NOT NULL,
+    status TEXT NOT NULL,
+  );
 `;
 
 module.exports = {
