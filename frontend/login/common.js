@@ -47,7 +47,7 @@ const sendDataGET = (path, successCallback=()=>{}, erroCallback=()=>{}) => {
         erroCallback('Something went wrong')
     });
 
-    localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjgwMDA3ODEwLCJleHAiOjE2ODAwMTUwMTB9.b05I7gxj-d8TrrwlhKPU5RECJ15xRPDQ6pIYu0-kOEg' );
+   // localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjgwMDA3ODEwLCJleHAiOjE2ODAwMTUwMTB9.b05I7gxj-d8TrrwlhKPU5RECJ15xRPDQ6pIYu0-kOEg' );
 }
 const processData = (data) => {
     console.log(data);
