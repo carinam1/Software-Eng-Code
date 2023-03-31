@@ -1,13 +1,8 @@
-const express = require('express');
 const database = require('./database');
 const userController = require('./modules/userController');
 const paymentMethod = require('./modules/paymentMethod');
 const healthMetrics = require('./modules/healthMetrics');
 const http = require('http');
-
-module.exports = {
-  jsonBodyParser,
-}
 
 // Middleware to parse JSON request bodies
 function jsonBodyParser(req, res, next) {
@@ -50,7 +45,15 @@ database.pool.connect()
       jsonBodyParser(req, res, () => {
         paymentMethod.createPayment(req, res);
       });
-    }
+    } else if (req.url === '/login_verify' && req.method === 'POST'){
+      jsonBodyParser(req, res, () => {
+        userController.loginVerify(req, res);
+      })
+    } else if (req.url === '/login_validate' && req.method === 'POST'){
+    jsonBodyParser(req, res, () => {
+      userController.loginValidate(req, res);
+    })
+  }
   });
 
 server.listen(3000, () => {

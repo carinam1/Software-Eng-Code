@@ -15,6 +15,7 @@ const dbSetupQuery = `
   CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
+    password TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE
   );
   CREATE TABLE IF NOT EXISTS payment (
