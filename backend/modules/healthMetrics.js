@@ -1,15 +1,15 @@
 const db = require('../database');
 
 module.exports = {
-    createPayment,
-    getPayment
+    createMetrics,
+    getMetrics
 }
 
-async function getPayment(req, res) {
+async function getMetrics(req, res) {
     try {
         db.pool.connect(
             async function(err, client, done) {
-                const result = await client.query('SELECT * FROM payment');
+                const result = await client.query('SELECT * FROM metrics');
                 res.writeHead(200, {'Content-Type': 'application/json'});
                 res.write(JSON.stringify(result.rows));
                 res.end();
@@ -23,15 +23,15 @@ async function getPayment(req, res) {
     }
 }
 
-async function createPayment(req, res) {
+async function createMetrics(req, res) {
     try {
-        const { ccnumber, cvv } = req.body;
+        const { height, weight } = req.body;
         db.pool.connect(
             async function(err, client, done){
-                const result = await client.query('INSERT INTO payment (ccnumber, cvv) VALUES ($1, $2) RETURNING id', [ccnumber, cvv]);
+                const result = await client.query('INSERT INTO metrics (height, weight) VALUES ($1, $2) RETURNING id', [height, weight]);
                 const id = result.rows[0].id;
                 res.writeHead(200, {'Content-Type': 'application/json'});
-                res.write(JSON.stringify({ id, ccnumber, cvv }));
+                res.write(JSON.stringify({ id, height, weight }));
                 res.end();
             }
         );

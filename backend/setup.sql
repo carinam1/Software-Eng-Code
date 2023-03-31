@@ -1,0 +1,3 @@
+CREATE DATABASE mydatabase;
+CREATE USER postgres WITH PASSWORD 'nuyuftw';
+GRANT ALL PRIVILEGES ON DATABASE mydatabase TO postgres;
