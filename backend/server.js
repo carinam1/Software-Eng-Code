@@ -1,14 +1,25 @@
 const express = require('express');
-const app = express();
-const { Client } = require('pg');
 const database = require('./database');
 const userController = require('./modules/userController');
-const bodyParser = require('body-parser');
 const paymentMethod = require('./modules/paymentMethod');
 const healthMetrics = require('./modules/healthMetrics');
+const http = require('http');
+
+module.exports = {
+  jsonBodyParser,
+}
 
 // Middleware to parse JSON request bodies
-app.use(bodyParser.json());
+function jsonBodyParser(req, res, next) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    req.body = JSON.parse(body);
+    next();
+  });
+}
 
 database.pool.connect()
   .then(() => {
@@ -22,34 +33,26 @@ database.pool.connect()
     console.error('Error setting up database:', err);
   });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+  const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write('Hello World!');
+      res.end();
+    } else if (req.url === '/users' && req.method === 'GET') {
+      userController.getUser(req, res);
+    } else if (req.url === '/users' && req.method === 'POST') {
+      jsonBodyParser(req, res, () => {
+        userController.createUser(req, res);
+      });
+    } else if (req.url === '/payment' && req.method === 'GET') {
+      paymentMethod.getPayment(req, res);
+    } else if (req.url === '/payment' && req.method === 'POST') {
+      jsonBodyParser(req, res, () => {
+        paymentMethod.createPayment(req, res);
+      });
+    }
+  });
 
-app.get('/users', function(req, res){
-    userController.getUser(req, res);
-});
-
-app.post('/users', function(req, res){
-    userController.createUser(req, res);
-});
-
-app.get('/payment', function(req, res){
-  paymentMethod.getPayment(req, res);
-});
-
-app.post('/payment', function(req, res){
-  paymentMethod.createPayment(req, res);
-});
-
-app.get('/metrics', function(req, res){
-  healthMetrics.getMetrics(req, res);
-});
-
-app.post('/metrics', function(req, res){
-  healthMetrics.createMetrics(req, res);
-});
-
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
