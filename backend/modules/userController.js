@@ -1,5 +1,4 @@
 const db = require('../database');
-//const http = require('http');
 
 const createUser = async function(req, res) {
   try {
@@ -43,27 +42,6 @@ const getUser = async function(req, res) {
   }
 }
 
-/*
-const server = http.createServer(function(req, res) {
-  if (req.method === 'GET' && req.url === '/users') {
-    getUser(req, res);
-  } else if (req.method === 'POST' && req.url === '/users') {
-    let body = '';
-    req.on('data', function(chunk) {
-      body += chunk.toString();
-    });
-    req.on('end', function() {
-      req.body = JSON.parse(body);
-      createUser(req, res);
-    });
-  } else {
-    res.writeHead(404, {'Content-Type': 'text/plain'});
-    res.write('404 Not Found\n');
-    res.end();
-  }
-});
-
-*/
 module.exports = {
   createUser,
   getUser
