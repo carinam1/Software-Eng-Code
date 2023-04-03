@@ -15,25 +15,29 @@
     <form id="waterIntakeForm">
       <label for="waterIntakeInput">Enter the amount of water you drank today in ounces:</label>
       <input type="number" id="waterIntakeInput" name="waterIntake">
-      <button type="submit">Submit</button>
+      <button type="submit" id="charlie">Submit</button>
     </form>
 
     <script>
-        // Add an event listener to the form submit button
-        document.getElementById("waterIntakeForm").addEventListener("submit", function(event) {
-          event.preventDefault(); // Prevent the default form submission behavior
-          const waterIntake = document.getElementById("waterIntakeInput").value; // Get the user's water intake from the input field
-          const xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-          xhr.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-              // Display the result in a pop-up message
-              alert(this.responseText);
-            }
-          };
-          xhr.open("POST", "/water-intake"); // Send a POST request to the backend code at the "/water-intake" endpoint
-          xhr.setRequestHeader("Content-Type", "application/json"); // Set the request header to indicate that we're sending JSON data
-          xhr.send(JSON.stringify({waterIntake: waterIntake})); // Send the user's water intake as JSON data in the request body
-        });
+       var myForm = document.querySelector('form');
+
+       myForm.addEventListener('submit', function(event){
+        event.preventDefault();
+        var formData = new FormData(myForm);
+
+        var charlie = formData.get("waterIntake");
+        charlie = parseFloat(charlie);
+        if (charlie < 80) {
+    alert("Drink up");
+  } else if (charlie >= 80 && charlie <= 90) {
+    alert("Quenched");
+  } else {
+    alert("Put the bottle down");
+  }
+        console.log(charlie);
+       });
+      
+    
     </script>
 
   </body>
