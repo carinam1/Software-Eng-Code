@@ -88,6 +88,52 @@ margin: 0 auto;
   }
 
   .chris_hemsworth_image{
-    max-width: 50%;
+    /* max-width: 50%; */
     max-height: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    height:200px;
+    width:300px;
+  }
+  .carina{
+    padding-top:20px;
+    height: 100%;
+    /* background-color: pink; */
+    margin-bottom: 40px;
+    color: white;
+    font-size:25px;
+  }
+
+  .food_photo{
+   /* max-width: 50%; */
+   max-height: 50%;
+   margin-left:40px;
+   margin-right:auto;
+   transform: translateY(50px);
+   height:350px;
+   width:250px;
+  }
+
+  .carina p{
+    transform: translateY(45px);
+  }
+
+  .carina ul {
+    font-family: 'Abel', sans-serif;
+    margin-top: 50px;
+    color: white;
+    font-size:25px;
+  }
+
+  .panda {
+    margin-right: 20px;
+  }
+
+  .friends_photo{
+    /* max-width: 50%; */
+    max-height: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    height:200px;
+    width:300px;
   }

@@ -10,12 +10,16 @@ async function getMetrics(req, res) {
         db.pool.connect(
             async function(err, client, done) {
                 const result = await client.query('SELECT * FROM metrics');
-                res.json(result.rows);
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.write(JSON.stringify(result.rows));
+                res.end();
             }
         );
     }catch (err) {
         console.error(err);
-        res.sendStatus(500);
+        res.statusCode = 500; // set the status code
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Internal Server Error'); // send the response body\
     }
 }
 
@@ -26,11 +30,15 @@ async function createMetrics(req, res) {
             async function(err, client, done){
                 const result = await client.query('INSERT INTO metrics (height, weight) VALUES ($1, $2) RETURNING id', [height, weight]);
                 const id = result.rows[0].id;
-                res.status(201).json({ id, height, weight });
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.write(JSON.stringify({ id, height, weight }));
+                res.end();
             }
         );
     } catch (err) {
         console.error(err);
-        res.sendStatus(500);
+        res.statusCode = 500; // set the status code
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Internal Server Error'); // send the response body\
     }
 }

@@ -1,9 +1,7 @@
 var pg = require('pg')
-var PGUSER = 'deploy'
-var PGDATABASE = 'oscpushserver'
 var config = {
     user: 'postgres', // name of the user account
-    password: 'Bagel12',
+    password: 'password',
     database: 'postgres', // name of the database
     host: 'localhost',
     port: '5432',
@@ -17,6 +15,7 @@ const dbSetupQuery = `
   CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
+    password TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE
   );
   CREATE TABLE IF NOT EXISTS payment (
