@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href ="logged_in_homepage.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+        <title>Logged In</title>
+    </head>
+        <body>
+            <header>
+                <div class = "containter">
+                    <div class = "logo">
+                    <img src="NUYU_logo.png" alt="logo"
+                    height="75">
+                </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Workouts</a></li>
+                            <li><a href="#">Recipes</a></li>
+                            <li id="login-menu-link"><a href="http://127.0.0.1:5500/Login:Sign%20Up/login.html">Log In</a></li>
+                            <li id="logout-menu-link"><a href="javascript: void(0)" onclick="logoutUser()">Log out</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </body>
+</html>
+<script>
+    const token = localStorage.getItem('token');
+    const loginLink =  document.getElementById('login-menu-link');
+    const logoutLink =  document.getElementById('logout-menu-link');
+    
+    if(token) {
+        loginLink.classList.add('hide-element');    
+        logoutLink.classList.remove('hide-element');
+    } else {
+        loginLink.classList.remove('hide-element');    
+        logoutLink.classList.add('hide-element');
+    }
+    function logoutUser(){
+        localStorage.removeItem('token');
+        alert('You are logged out successfully');
+        window.location.reload();
+    }
+    </script>

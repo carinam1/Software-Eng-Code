@@ -1,0 +1,185 @@
+body {
+    font-family: 'Abel', sans-serif;
+    background-image: url("https://wallpapercave.com/wp/wp5349244.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
+  }
+
+  .container{
+    width: 80%;
+    margin: 0 auto;
+      }
+    
+      header {
+        background: #000000;
+        opacity: 0.8;
+      }
+    
+      header::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    
+      .logo{
+        float: left;
+        padding: 10px 0;
+      }
+    
+      nav{
+        float: right;
+      }
+    
+      nav ul {
+        margin: 0;
+        padding: 0;
+        list-style:none;
+      }
+    
+      nav li {
+        display: inline-block;
+        margin: 0 35px;
+        padding-top: 35px;
+      }
+    
+      nav a{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 30px;
+      }
+    
+      nav a:hover {
+        color: gray;
+      }
+    
+      .center_image{
+        margin-left: 150px;
+        margin-top: 130px;
+      }
+
+.form_section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Abel', sans-serif;
+}
+
+.form_container{
+    width: 60%;
+    min-width: 300px;
+    height: 80vh;
+    background: #fff;
+    overflow: hidden;
+    z-index: 2;
+    display: flex;
+    box-shadow: 0 0 100px rgba(0,0,0,0.2);
+    opacity: 0.85;
+}
+
+.form_img{
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form{
+    width: 60%;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form_heading{
+    font-family: 'Abel', sans-serif;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b9b9b9;
+    margin: 5px 0;
+    padding: 10px;
+    line-height: 40px;
+    color: #000;
+    outline: none;
+    border-radius: 5px;
+}
+
+input:focus{
+    border: 2px solid #d5be8b;
+}
+
+.error{
+    display: block;
+    font-size: 0.8rem;
+    color: rgb(255,41,41);
+    margin: 5px 0;
+    text-transform:capitalize;
+    font-family: 'Abel', sans-serif;
+    user-select: none;
+    opacity: 0;
+}
+
+.error.show{
+    opacity: 1;
+}
+
+#tc{
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border: 1px solid #b9b9b9;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#tc:checked{
+    background: #d5be8b;
+}
+
+.tc-text{
+    margin-left: 5px;
+    font-size: 0.8 rem;
+}
+
+.tc-text a{
+    color: #000;
+}
+
+.submit-btn{
+  margin: 45px 0 30px 0;
+  height: 45px;
+  width: 365px;
+  font-size: 20px;
+  color: white;
+  outline: none;
+  font-family: 'Abel', sans-serif;
+  cursor: pointer;
+  background: #414934;
+  border-radius: 3px;
+  border: 1px solid rgb(33, 51, 36);
+}
+
+.submit-btn:hover{
+  background: #30482a;
+}
+
+.other-form-link{
+    color: #000;
+    font-size: 1.0rem;
+}
+
