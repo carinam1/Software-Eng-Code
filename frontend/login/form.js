@@ -22,8 +22,8 @@ if(fullname != null){ //signup page
             password: password.value,
             tac: tac.checked
         }, (response) => {
-            alert("Thank you for registration, please to access private area");
-            window.location.href = '/Login/login.html';
+            alert("Thank you for registration, please login to access private area");
+            window.location.href = '../Login/login.html';
 
         }, (errr) => {
             alert(errr);
@@ -34,15 +34,18 @@ if(fullname != null){ //signup page
         alert('Fill all the inputs')
       
     } else {
-        sendData('/login',{
+        sendData('/login_validate',{
             email: email.value,
             password: password.value,
         },  (response) =>{
            if(response.token) {
                 localStorage.setItem('token', response.token);
-                checkUserList();
+                alert('You are logged in successfully');
+                window.location.href = '/frontend/login/logged_in_homepage.html';
+                // checkUserList();
             }
         }, (err) => {
+            alert(err);
             console.log(err);
         })
     }

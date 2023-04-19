@@ -19,14 +19,29 @@
                             <li><a href="#">Profile</a></li>
                             <li><a href="#">Workouts</a></li>
                             <li><a href="#">Recipes</a></li>
-                            <li><a href="http://127.0.0.1:5500/frontend/login/logout.html">Log Out</a></li>
+                            <li id="login-menu-link"><a href="http://127.0.0.1:5500/Login:Sign%20Up/login.html">Log In</a></li>
+                            <li id="logout-menu-link"><a href="javascript: void(0)" onclick="logoutUser()">Log out</a></li>
                         </ul>
                     </nav>
                 </div>
             </header>
-            <main>
-                <!--Add the water intake tracker in an iframe-->
-                <iframe src="waterRec.html" width="100%" height="150"></iframe>
-            </main>
         </body>
 </html>
+<script>
+    const token = localStorage.getItem('token');
+    const loginLink =  document.getElementById('login-menu-link');
+    const logoutLink =  document.getElementById('logout-menu-link');
+    
+    if(token) {
+        loginLink.classList.add('hide-element');    
+        logoutLink.classList.remove('hide-element');
+    } else {
+        loginLink.classList.remove('hide-element');    
+        logoutLink.classList.add('hide-element');
+    }
+    function logoutUser(){
+        localStorage.removeItem('token');
+        alert('You are logged out successfully');
+        window.location.reload();
+    }
+    </script>

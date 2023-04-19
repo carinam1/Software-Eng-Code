@@ -2,18 +2,19 @@ const basePath = 'http://localhost:3000';
 const sendData = (path, data, successCallback=()=>{}, erroCallback=()=>{}) => {
     const token = localStorage.getItem('token');
     fetch(basePath + path, {
-        method: 'post',
-        headers: new Headers({'Content-Type': 'application/json','authorization':`Bearer ${token}`}),
+        method: 'POST',
+        headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
+    .then(res => {
+        console.log(res);
+        return res.json()
+    })
     .then(data => {
-        console.log(data);
         if(data.Status == 200) {
-            // console.log(data);
             successCallback(data);
         } else {
-            erroCallback(data.message);
+            erroCallback(data.Message);
         } 
         
     })
@@ -29,7 +30,7 @@ const sendData = (path, data, successCallback=()=>{}, erroCallback=()=>{}) => {
 const sendDataGET = (path, successCallback=()=>{}, erroCallback=()=>{}) => {
     const token = localStorage.getItem('token');
    fetch(basePath + path, {
-        method: 'get',
+        method: 'GET',
         headers: new Headers({'Content-Type': 'application/json','authorization':`Bearer ${token}`}),
     })
     .then(res => res.json())
