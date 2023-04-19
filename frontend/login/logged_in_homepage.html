@@ -28,6 +28,10 @@
         </body>
 </html>
 <script>
+    function navigate(url) {
+        window.location.href = url;
+    }
+    
     const token = localStorage.getItem('token');
     const loginLink =  document.getElementById('login-menu-link');
     const logoutLink =  document.getElementById('logout-menu-link');

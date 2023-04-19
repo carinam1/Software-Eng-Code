@@ -10,7 +10,7 @@
     <body>
         <header>
             <div class = "containter">
-                <div class = "logo">
+                <div class = "logo" onclick="navigate('../homepage/homepage.html')">
                 <img src="NUYU_logo.png" alt="logo"
                 height="75">
             </div>
@@ -19,7 +19,6 @@
                     <ul>
                         <li><a href="#">Benefits</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
                         <li><a href="http://127.0.0.1:5500/Login:Sign%20Up/login.html">Log In</a></li>
                     </ul>
                 </nav>
@@ -41,5 +40,10 @@
                 
             </div>
         </section>
+        <script> 
+        function navigate(url) {
+            window.location.href = url;
+          }
+            </script>
     </body>
 </html>
