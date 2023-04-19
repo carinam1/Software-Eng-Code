@@ -1,0 +1,41 @@
+
+@font-face {
+  font-family: "Century Gothic-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Century Gothic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Century Gothic-Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Century Gothic") format("truetype");
+}
+
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.hidden,
+.hidden * {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
