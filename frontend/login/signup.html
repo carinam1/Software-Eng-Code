@@ -11,7 +11,7 @@
 
         <header>
             <div class = "containter">
-                <div class = "logo">
+                <div class = "logo" onclick="navigate('../homepage/homepage.html')">
                 <img src="NUYU_logo.png" alt="logo"
                 height="75">
             </div>
@@ -45,6 +45,11 @@
                 <img src="https://www.mensjournal.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk2MTM2MDQyNDIzOTg1Mjk3/dbfrontsquat.jpg" class="form_img"> 
             </div>
         </section>
+        <script> 
+            function navigate(url) {
+                window.location.href = url;
+              }
+        </script>
         <script src="form.js"></script>
         <script src="common.js"></script>
     </body>
