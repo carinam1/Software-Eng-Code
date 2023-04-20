@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/desktop-2.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  </head>
+  <body style="margin: 0; background: #e6e3e3">
+    <input type="hidden" id="anPageName" name="page" value="desktop-2" />
+    <div class="container-center-horizontal">
+      <div class="desktop-2 screen">
+        <div class="overlap-group">
+          <div class="background"><img class="background-1" src="img/background.png" alt="Background" /></div>
+          <div class="rectangle-2"></div>
+          <div class="frame-2 animate-enter">
+            <h1 class="title">Frequently Asked Questions</h1>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              How Do I Find The Macro Information For A Specific Food Item?
+            </p>
+            <p class="frame-2-item-1 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              To Find The Macro Information For A Specific Food Item, Simply Enter The Name Of The Food Item In The
+              Search Box Provided And Click The &#34;search&#34; Button. The Macros Tracker Will Search The Usda Food
+              Nutrients Database And Display The Macro Information For The Food Item, Including Its Protein,
+              Carbohydrates, And Fat Content.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              Can I Track My Daily Macro Intake Using The Macros Tracker?
+            </p>
+            <p class="frame-2-item-1 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              Yes, You Can Track Your Daily Macro Intake Using The Macros Tracker. As You Add Food Items Throughout The
+              Day, The Tracker Will Automatically Calculate And Display The Total Macro Intake For The Day. This
+              Information Can Help You Make Informed Decisions About Your Diet And Ensure You Are Meeting Your
+              Nutritional Goals.
+            </p>
+            <p class="how-do-the-ai-recommendations-work centurygothic-bold-white-40px">
+              How Do The Ai Recommendations Work?
+            </p>
+            <p class="the-ai-recommendatio centurygothic-regular-normal-white-32px">
+              The Ai Recommendations Are Based On An Analysis Of Your Workout And Eating Habits Over The Past Week. The
+              System Uses Machine Learning Algorithms To Identify Patterns And Trends In Your Data And Provide
+              Personalized Recommendations To Help You Optimize Your Fitness Routine And Diet.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              How Do I Connect With Other Users On The Social Media Platform?
+            </p>
+            <p class="frame-2-item-2 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              To Connect With Other Users On The Social Media Platform, You Can Search For Users By Their Username Or
+              Use The &#34;discover&#34; Feature To Find People With Similar Interests. Once You Find Someone You&#39;d
+              Like To Connect With, Simply Send Them A Friend Request. After They Accept Your Request, You&#39;ll Be
+              Able To See Their Posts, Share Your Own Workout Updates, And Exchange Messages.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              How Do I Access Celebrity Workout Playlists And Regimens?
+            </p>
+            <p class="frame-2-item-2 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              To Access Celebrity Workout Playlists And Regimens, Navigate To The &#34;celebrity Workouts&#34; Section
+              Of The Fitness Hub. Here, You Will Find A Curated List Of Workout Routines And Playlists From Various
+              Celebrities And Fitness Influencers. You Can Browse Through The List, Select A Workout That Interests You,
+              And Follow The Provided Instructions To Incorporate The Routine Into Your Own Fitness Plan.
+            </p>
+          </div>
+          <div class="group-1 animate-enter1">
+            <div class="nav-bar">
+              <div class="nav-bar-whole">
+                <div class="logo">
+                  <img class="logo-white" src="img/logo-white@2x.png" alt="Logo White" />
+                  <img class="line-1" src="img/line-1@2x.png" alt="Line 1" />
+                </div>
+                <div class="nav-buttons centurygothic-regular-normal-white-32px">
+                  <div class="benefits">Benefits</div>
+                  <div class="faq">FAQ</div>
+                  <div class="log-in">Log-In</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function ShowOnScroll() {
+        this.toShow = [];
+        this.nextEventY = undefined;
+      }
+
+      ShowOnScroll.prototype.show = function (e) {
+        e.style.display = "";
+      };
+
+      ShowOnScroll.prototype.hide = function (e) {
+        e.style.display = "none";
+      };
+
+      ShowOnScroll.prototype.getTop = function (e) {
+        if (e.Top != undefined && e.Top != 0) {
+          return e.Top;
+        }
+        var top = 0;
+        var iter = e;
+        do {
+          top += iter.offsetTop || 0;
+          iter = iter.offsetParent;
+        } while (iter);
+        e.Top = top;
+        return top;
+      };
+
+      ShowOnScroll.prototype.onScroll = function () {
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+          return;
+        }
+        this.nextEventY = undefined;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            this.show(e);
+            this.toShow.shift();
+            i--;
+          } else {
+            this.nextEventY = top;
+            break;
+          }
+        }
+      };
+
+      ShowOnScroll.prototype.resetScrolling = function () {
+        // Clear state
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          this.show(e);
+        }
+        this.toShow = [];
+        this.nextEventY == undefined;
+
+        // Collect items
+        var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+        itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
+          return e.getAttribute("show-on-scroll") != undefined;
+        });
+        var getTop = this.getTop;
+        itemsToShowOnScroll.sort(function (a, b) {
+          return getTop(a) - getTop(b);
+        });
+        for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+          var e = itemsToShowOnScroll[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            continue;
+          }
+          this.toShow.push(e);
+          this.hide(e);
+          this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+        }
+      };
+
+      ShowOnScroll.prototype.handleEvent = function (e) {
+        switch (e.type) {
+          case "scroll":
+            this.onScroll();
+            break;
+          case "resize":
+            this.resetScrolling();
+            break;
+        }
+      };
+
+      ShowOnScroll.prototype.init = function () {
+        this.resetScrolling();
+        window.addEventListener("scroll", this);
+        window.addEventListener("resize", this);
+      };
+
+      // After anima-src
+      setTimeout(function () {
+        var instShowOnScroll = new ShowOnScroll();
+        instShowOnScroll.init();
+      }, 250);
+    </script>
+  </body>
+</html>
