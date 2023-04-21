@@ -1,0 +1,261 @@
+/* screen - desktop-2 */
+
+.desktop-2 {
+  align-items: flex-start;
+  background-color: var(--grey);
+  border: 1px none;
+  display: flex;
+  height: 2800;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.desktop-2 .overlap-group {
+  height: 2386px;
+  position: relative;
+  width: 1442px;
+}
+
+.desktop-2 .background {
+  position: fixed;
+  display: flex;
+  height: 1024px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1442px;
+}
+
+.desktop-2 .background-1 {
+  flex: 1;
+  position: fixed;
+  object-fit: cover;
+  width: 1440px;
+}
+
+.desktop-2 .rectangle-2 {
+  background-color: #00000099;
+  height: 2000px;
+  left: 270px;
+  position: absolute;
+  top: 235px;
+  width: 900px;
+}
+
+.desktop-2 .frame-2 {
+  align-items: center;
+  flex-direction: column;
+  gap: 22px;
+  justify-content: center;
+  left: 305px;
+  opacity: 0;
+  position: absolute;
+  top: 270px;
+  transform: scale(1.1);
+  width: fit-content;
+}
+
+.desktop-2 .frame-2.animate-enter {
+  animation: animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+@keyframes animate-enter-frames {
+  from{opacity: 0;
+transform: scale(1.1);
+}
+to{opacity: 1;
+transform: scale(1);
+}
+}
+
+.desktop-2 .title {
+  color: var(--white);
+  font-family: var(--font-family-century_gothic-bold);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  height: 48px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  width: 825px;
+}
+
+.desktop-2 .frame-2-item {
+  height: 100px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-decoration: underline;
+  width: 825px;
+}
+
+.desktop-2 .frame-2-item-1 {
+  height: 275px;
+}
+
+.desktop-2 .how-do-the-ai-recommendations-work {
+  height: 48px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-decoration: underline;
+  width: 825px;
+}
+
+.desktop-2 .the-ai-recommendatio {
+  height: 230px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  width: 825px;
+}
+
+.desktop-2 .frame-2-item-2 {
+  height: 310px;
+}
+
+.desktop-2 .group-1 {
+  height: 99px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 56px;
+  transform: scale(1.1);
+  width: 1440px;
+}
+
+.desktop-2 .group-1.animate-enter1 {
+  animation: animate-enter1-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+@keyframes animate-enter1-frames {
+  from{opacity: 0;
+transform: scale(1.1);
+}
+to{opacity: 1;
+transform: scale(1);
+}
+}
+
+.desktop-2 .nav-bar {
+  background-color: var(--black80);
+  box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  flex: 1;
+  height: 99px;
+}
+
+.desktop-2 .nav-bar-whole {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  height: 45.3px;
+  justify-content: space-between;
+  margin-top: 24px;
+  position: relative;
+  width: 1440px;
+}
+
+.desktop-2 .logo {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  padding: 0px 30px;
+  position: relative;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.desktop-2 .logo:hover {
+  transform: scale(1.1);
+}
+
+.desktop-2 .logo-white {
+  cursor: pointer;
+  height: 47.13px;
+  margin-bottom: -1.04px;
+  margin-left: -0.78px;
+  margin-top: -0.79px;
+  min-width: 96.57px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.desktop-2 .logo-white:hover {
+  transform: scale(1.1);
+}
+
+.desktop-2 .line-1 {
+  height: 45px;
+  margin-right: -2.00px;
+  min-width: 2px;
+  position: relative;
+}
+
+.desktop-2 .nav-buttons {
+  align-items: center;
+  display: flex;
+  gap: 50px;
+  justify-content: flex-end;
+  padding: 0px 30px;
+  position: relative;
+  width: fit-content;
+}
+
+.desktop-2 .benefits {
+  cursor: pointer;
+  height: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  transition: all 0.2s ease;
+  width: 126px;
+}
+
+.desktop-2 .benefits:hover {
+  transform: scale(1.1);
+}
+
+.desktop-2 .faq {
+  cursor: pointer;
+  height: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  transition: all 0.2s ease;
+  width: 76px;
+}
+
+.desktop-2 .faq:hover {
+  transform: scale(1.1);
+}
+
+.desktop-2 .log-in {
+  cursor: pointer;
+  height: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  transition: all 0.2s ease;
+  width: 99px;
+}
+
+.desktop-2 .log-in:hover {
+  transform: scale(1.1);
+}
+
+.desktop-2 .frame-2-item-3 {
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  width: 825px;
+}

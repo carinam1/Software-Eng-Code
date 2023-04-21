@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="../homepage/nuyu logo favicon.svg" />
+    <link rel="stylesheet" type="text/css" href="css/benefits.css" />
+    <link rel="stylesheet" type="text/css" href="css/benefitsstyleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/benefitsglobals.css" />
+  </head>
+  <body style="margin: 0; background: #e6e3e3">
+    <input type="hidden" id="anPageName" name="page" value="desktop-2" />
+    <div class="container-center-horizontal">
+      <div class="desktop-2 screen">
+        <div class="overlap-group">
+          <div class="background"><img class="background-1" src="img/background.png" alt="Background" /></div>
+          <div class="rectangle-2"></div>
+          <div class="frame-2 animate-enter">
+            <h1 class="title">Benefits</h1>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              Personalized fitness tracking
+            </p>
+            <p class="frame-2-item-1 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              The app allows you to track your workouts, nutrition, and progress, providing a personalized and comprehensive overview of your fitness journey.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              Convenient macro tracking
+            </p>
+            <p class="frame-2-item-1 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              With the integrated macros tracker and USDA Food Nutrients API, you can easily track your daily macro intake and ensure you are meeting your nutritional goals.
+            </p>
+            <p class="how-do-the-ai-recommendations-work centurygothic-bold-white-40px">
+              AI-powered recommendations
+            </p>
+            <p class="the-ai-recommendatio centurygothic-regular-normal-white-32px">
+              The app offers AI-generated recommendations based on your workout and eating habits, helping you optimize your fitness routine and diet for better results.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              Social engagement
+            </p>
+            <p class="frame-2-item-2 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              The social media aspect of the app allows you to connect with like-minded individuals, share your fitness journey, and stay motivated through mutual support and encouragement.
+            </p>
+            <p class="frame-2-item centurygothic-bold-white-40px">
+              Access to celebrity workout routines
+            </p>
+            <p class="frame-2-item-2 frame-2-item-3 centurygothic-regular-normal-white-32px">
+              The app provides access to workout routines and playlists from various celebrities and fitness influencers, allowing you to incorporate new and effective workouts into your fitness regimen.
+            </p>
+          </div>
+          <div class="group-1 animate-enter1">
+            <div class="nav-bar">
+              <div class="nav-bar-whole">
+                <div class="logo">
+                  <img class="logo-white" src="img/logo-white@2x.png" onclick="navigate('../homepage/homepage.html')" alt="Logo White" />
+                  <img class="line-1" src="img/line-1@2x.png" alt="Line 1" />
+                </div>
+                <div class="nav-buttons centurygothic-regular-normal-white-32px">
+                  <div class="benefits" onclick="navigate('../benefits/benefits.html')">Benefits</div>
+                  <div class="faq" onclick="navigate('../FAQ/faq.html')">FAQ</div>
+                  <div class="log-in" onclick="navigate('../login/login.html')">Log-In</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+         
+         function navigate(url) {
+        window.location.href = url;
+      }
+      function ShowOnScroll() {
+        this.toShow = [];
+        this.nextEventY = undefined;
+      }
+
+      ShowOnScroll.prototype.show = function (e) {
+        e.style.display = "";
+      };
+
+      ShowOnScroll.prototype.hide = function (e) {
+        e.style.display = "none";
+      };
+
+      ShowOnScroll.prototype.getTop = function (e) {
+        if (e.Top != undefined && e.Top != 0) {
+          return e.Top;
+        }
+        var top = 0;
+        var iter = e;
+        do {
+          top += iter.offsetTop || 0;
+          iter = iter.offsetParent;
+        } while (iter);
+        e.Top = top;
+        return top;
+      };
+
+      ShowOnScroll.prototype.onScroll = function () {
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+          return;
+        }
+        this.nextEventY = undefined;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            this.show(e);
+            this.toShow.shift();
+            i--;
+          } else {
+            this.nextEventY = top;
+            break;
+          }
+        }
+      };
+
+      ShowOnScroll.prototype.resetScrolling = function () {
+        // Clear state
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          this.show(e);
+        }
+        this.toShow = [];
+        this.nextEventY == undefined;
+
+        // Collect items
+        var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+        itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
+          return e.getAttribute("show-on-scroll") != undefined;
+        });
+        var getTop = this.getTop;
+        itemsToShowOnScroll.sort(function (a, b) {
+          return getTop(a) - getTop(b);
+        });
+        for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+          var e = itemsToShowOnScroll[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            continue;
+          }
+          this.toShow.push(e);
+          this.hide(e);
+          this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+        }
+      };
+
+      ShowOnScroll.prototype.handleEvent = function (e) {
+        switch (e.type) {
+          case "scroll":
+            this.onScroll();
+            break;
+          case "resize":
+            this.resetScrolling();
+            break;
+        }
+      };
+
+      ShowOnScroll.prototype.init = function () {
+        this.resetScrolling();
+        window.addEventListener("scroll", this);
+        window.addEventListener("resize", this);
+      };
+
+      // After anima-src
+      setTimeout(function () {
+        var instShowOnScroll = new ShowOnScroll();
+        instShowOnScroll.init();
+      }, 250);
+    </script>
+  </body>
+</html>

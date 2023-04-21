@@ -1,0 +1,28 @@
+:root { 
+  --black: #000000;
+  --black80: #000000cc;
+  --grey: #e6e3e3;
+  --white: #ffffff;
+ 
+  --font-size-l: 40px;
+  --font-size-m: 32px;
+  --font-size-xl: 48px;
+ 
+  --font-family-century_gothic-bold: "Century Gothic-Bold", Helvetica;
+  --font-family-century_gothic-regular: "Century Gothic-Regular", Helvetica;
+}
+.centurygothic-regular-normal-white-32px {
+  color: var(--white);
+  font-family: var(--font-family-century_gothic-regular);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.centurygothic-bold-white-40px {
+  color: var(--white);
+  font-family: var(--font-family-century_gothic-bold);
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: 700;
+}
