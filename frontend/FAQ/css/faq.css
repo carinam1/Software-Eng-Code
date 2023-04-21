@@ -5,7 +5,7 @@
   background-color: var(--grey);
   border: 1px none;
   display: flex;
-  height: 3072px;
+  height: 2800;
   overflow: hidden;
   width: 1440px;
 }
@@ -35,7 +35,7 @@
 
 .desktop-2 .rectangle-2 {
   background-color: #00000099;
-  height: 2151px;
+  height: 2000px;
   left: 270px;
   position: absolute;
   top: 235px;

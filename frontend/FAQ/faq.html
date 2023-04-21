@@ -2,15 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
-    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
-    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
-    <meta name="og:type" content="website" />
-    <meta name="twitter:card" content="photo" />
-    <link rel="stylesheet" type="text/css" href="css/desktop-2.css" />
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../homepage/nuyu logo favicon.svg" />
+    <link rel="stylesheet" type="text/css" href="css/faq.css" />
+    <link rel="stylesheet" type="text/css" href="css/faqstyleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/faqglobals.css" />
   </head>
   <body style="margin: 0; background: #e6e3e3">
     <input type="hidden" id="anPageName" name="page" value="desktop-2" />
@@ -70,13 +65,13 @@
             <div class="nav-bar">
               <div class="nav-bar-whole">
                 <div class="logo">
-                  <img class="logo-white" src="img/logo-white@2x.png" alt="Logo White" />
+                  <img class="logo-white" src="img/logo-white@2x.png" onclick="navigate('../homepage/homepage.html')" alt="Logo White" />
                   <img class="line-1" src="img/line-1@2x.png" alt="Line 1" />
                 </div>
                 <div class="nav-buttons centurygothic-regular-normal-white-32px">
-                  <div class="benefits">Benefits</div>
-                  <div class="faq">FAQ</div>
-                  <div class="log-in">Log-In</div>
+                  <div class="benefits" onclick="navigate('../benefits/benefits.html')">Benefits</div>
+                  <div class="faq" onclick="navigate('../FAQ/faq.html')">FAQ</div>
+                  <div class="log-in" onclick="navigate('../login/login.html')">Log-In</div>
                 </div>
               </div>
             </div>
@@ -85,6 +80,10 @@
       </div>
     </div>
     <script>
+         
+         function navigate(url) {
+        window.location.href = url;
+      }
       function ShowOnScroll() {
         this.toShow = [];
         this.nextEventY = undefined;
