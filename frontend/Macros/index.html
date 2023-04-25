@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food API Example</title>
+</head>
+<body>
+    <label for="input-box">Enter text:</label>
+    <input type="text" id="input-box">
+    <button onclick="submitText()">Search</button>
+    <br>
+    <br>
+
+    <select id="data-select" ></select>
+    <div id="data-container">
+
+    </div>
+    <button id="add-to-log">Add to Log</button>
+    <p id="daily-calories">Total Daily Calories: 0</p>
+    <p id="daily-protein">Total Daily Protein: 0 g</p>
+    <p id="daily-fat">Total Daily Fat: 0 g</p>
+    <p id="daily-carbohydrates">Total Daily Carbohydrates: 0 g</p>
+    <script src="script.js">
+    </script>
+    <script>
+        let dailyMacros = {
+            calories: 0,
+            protein: 0,
+            fat: 0,
+            carbohydrates: 0
+        };
+
+        document.getElementById('add-to-log').addEventListener('click', () => {
+            // Update daily macros
+            dailyMacros.calories += parseFloat(calories.split(' ')[0]);
+            dailyMacros.protein += parseFloat(protein.split(' ')[0]);
+            dailyMacros.fat += parseFloat(fat.split(' ')[0]);
+            dailyMacros.carbohydrates += parseFloat(carbohydrate.split(' ')[0]);
+
+            // Update daily nutrients display
+            document.getElementById('daily-calories').innerHTML = `Total Daily Calories: ${dailyMacros.calories.toFixed(2)}`;
+            document.getElementById('daily-protein').innerHTML = `Total Daily Protein: ${dailyMacros.protein.toFixed(2)} g`;
+            document.getElementById('daily-fat').innerHTML = `Total Daily Fat: ${dailyMacros.fat.toFixed(2)} g`;
+            document.getElementById('daily-carbohydrates').innerHTML = `Total Daily Carbohydrates: ${dailyMacros.carbohydrates.toFixed(2)} g`;
+
+            // Display daily macros
+            console.log('Daily Macros:', dailyMacros);
+        });
+    </script>
+</body>
+</html>
