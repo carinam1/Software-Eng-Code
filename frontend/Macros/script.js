@@ -81,7 +81,9 @@ function addToLogTable(foodName, calories, protein, fat, carbs) {
     removeButton.onclick = function() {
         removeFromLog(row, calories, protein, fat, carbs);
     };
-    row.insertCell().appendChild(removeButton);
+    const removeCell = row.insertCell();
+    removeCell.className = "remove-cell";
+    removeCell.appendChild(removeButton);
 }
 
 function removeFromLog(row, calories, protein, fat, carbs) {

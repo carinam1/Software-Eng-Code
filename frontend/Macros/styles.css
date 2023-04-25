@@ -71,3 +71,14 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+.remove-cell {
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+.remove-header {
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    background-color: transparent;
+}
