@@ -75,4 +75,25 @@ function addToLogTable(foodName, calories, protein, fat, carbs) {
     row.insertCell().innerHTML = protein;
     row.insertCell().innerHTML = fat;
     row.insertCell().innerHTML = carbs;
+
+    const removeButton = document.createElement("button");
+    removeButton.innerHTML = "Remove";
+    removeButton.onclick = function() {
+        removeFromLog(row, calories, protein, fat, carbs);
+    };
+    row.insertCell().appendChild(removeButton);
+}
+
+function removeFromLog(row, calories, protein, fat, carbs) {
+    dailyMacros.calories -= parseFloat(calories.split(" ")[0]);
+    dailyMacros.protein -= parseFloat(protein.split(" ")[0]);
+    dailyMacros.fat -= parseFloat(fat.split(" ")[0]);
+    dailyMacros.carbohydrates -= parseFloat(carbs.split(" ")[0]);
+
+    document.getElementById("daily-calories").innerHTML = `Total Daily Calories: ${dailyMacros.calories.toFixed(2)}`;
+    document.getElementById("daily-protein").innerHTML = `Total Daily Protein: ${dailyMacros.protein.toFixed(2)} g`;
+    document.getElementById("daily-fat").innerHTML = `Total Daily Fat: ${dailyMacros.fat.toFixed(2)} g`;
+    document.getElementById("daily-carbohydrates").innerHTML = `Total Daily Carbohydrates: ${dailyMacros.carbohydrates.toFixed(2)} g`;
+
+    row.parentNode.removeChild(row);
 }
