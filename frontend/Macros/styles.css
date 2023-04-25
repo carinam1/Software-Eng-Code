@@ -82,3 +82,9 @@ th {
     border-bottom: 1px solid transparent;
     background-color: transparent;
 }
+.custom-select {
+    width: 7.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
