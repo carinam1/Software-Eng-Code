@@ -41,7 +41,7 @@ if(fullname != null){ //signup page
            if(response.token) {
                 localStorage.setItem('token', response.token);
                 alert('You are logged in successfully');
-                window.location.href = '/frontend/login/logged_in_homepage.html';
+                window.location.href = '/frontend/hub/hub.html';
                 // checkUserList();
             }
         }, (err) => {
