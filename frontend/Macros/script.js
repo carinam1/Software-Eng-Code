@@ -3,6 +3,8 @@ let protein = '0 g';
 let fat = '0 g';
 let carbohydrate = '0 g';
 
+let food;
+
 function submitText() {
     var text = document.getElementById("input-box").value;
 
@@ -25,7 +27,6 @@ function submitText() {
             select.onchange = function() {
                 // Get the selected option's value
                 let selectedId = this.value;
-                let food;
                 fetch("https://api.nal.usda.gov/fdc/v1/food/"+selectedId+"?api_key=vJbx4iLpZCsafpmVwdAFzQciR9a0LKp782rPLmYn")
                     .then(response => response.json())
                     .then(data => {
@@ -63,4 +64,15 @@ function getNutrient(nutrientData, nutrientName) {
     } else {
         return 'Not available';
     }
+}
+
+function addToLogTable(foodName, calories, protein, fat, carbs) {
+    const tableBody = document.getElementById("log-table-body");
+    const row = tableBody.insertRow();
+    
+    row.insertCell().innerHTML = foodName;
+    row.insertCell().innerHTML = calories;
+    row.insertCell().innerHTML = protein;
+    row.insertCell().innerHTML = fat;
+    row.insertCell().innerHTML = carbs;
 }
