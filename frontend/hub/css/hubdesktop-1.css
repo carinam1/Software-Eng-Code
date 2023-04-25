@@ -1,0 +1,194 @@
+/* screen - desktop-1 */
+
+.desktop-1 {
+  align-items: flex-start;
+  background-color: #272727;
+  border: 1px none;
+  display: flex;
+  height: 1024px;
+  padding: 28px 19px;
+  width: 1440px;
+}
+
+.desktop-1 .flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 246px;
+  margin-left: 2px;
+  min-height: 946px;
+  width: 500px;
+}
+
+.desktop-1 .ai {
+  background-image: url(../img/hal-gatewood-ogvqxgl7xo4-unsplash-3.png);
+  background-size: 100% 100%;
+  box-shadow: 0px 4px 4px #00000040;
+  cursor: pointer;
+  filter: blur(10px);
+  height: 350px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  width: 500px;
+}
+
+.desktop-1 .ai.animate-enter {
+  animation: animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+  filter: blur(10px);
+  opacity: 0;
+}
+
+@keyframes animate-enter-frames {
+  from{opacity: 0;
+filter: blur(10px);
+}
+to{opacity: 1;
+filter: none;
+}
+}
+
+.desktop-1 .ai:hover {
+  transform: scale(1.1);
+}
+
+.desktop-1 .overlap-group {
+  padding: 3px 38px;
+  position: relative;
+  top: 144px;
+}
+
+.desktop-1 .ai-recommendations {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 53px;
+  width: 424px;
+}
+
+.desktop-1 .social {
+  align-items: center;
+  background-image: url(../img/helena-lopes-pgnqt0rxwls-unsplash-3.png);
+  background-size: 100% 100%;
+  box-shadow: 0px 4px 4px #00000040;
+  cursor: pointer;
+  display: flex;
+  height: 350px;
+  min-width: 500px;
+  transition: all 0.2s ease;
+}
+
+.desktop-1 .social:hover {
+  transform: scale(1.1);
+}
+
+.desktop-1 .overlap-group1 {
+  padding: 4px 185px;
+}
+
+.desktop-1 .social-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 53px;
+  text-align: center;
+  width: 130px;
+}
+
+.desktop-1 .logo-white-1 {
+  display: block;
+  height: 95px;
+  margin-left: 100px;
+  margin-top: 436.98px;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.1);
+  width: 199px;
+}
+
+.desktop-1 .logo-white-1.animate-enter1 {
+  animation: animate-enter1-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+  display: block;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+@keyframes animate-enter1-frames {
+  from{opacity: 0;
+transform: scale(1.1);
+}
+to{opacity: 1;
+transform: scale(1);
+}
+}
+
+.desktop-1 .flex-col-1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 246px;
+  margin-left: 101px;
+  min-height: 946px;
+  width: 500px;
+}
+
+.desktop-1 .macros {
+  align-items: center;
+  background-image: url(../img/chad-montano-eeqbbemh9-c-unsplash-3.png);
+  background-size: 100% 100%;
+  box-shadow: 0px 4px 4px #00000040;
+  cursor: pointer;
+  display: flex;
+  height: 350px;
+  min-width: 500px;
+  transition: all 0.2s ease;
+}
+
+.desktop-1 .macros:hover {
+  transform: scale(1.1);
+}
+
+.desktop-1 .overlap-group2 {
+  padding: 3px 38px;
+}
+
+.desktop-1 .macros-tracker {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 53px;
+  text-align: center;
+  width: 424px;
+}
+
+.desktop-1 .playlists {
+  align-items: center;
+  background-image: url(../img/jakob-owens-nlyw63t-bv4-unsplash-3.png);
+  background-size: 100% 100%;
+  box-shadow: 0px 4px 4px #00000040;
+  cursor: pointer;
+  display: flex;
+  height: 350px;
+  min-width: 500px;
+  transition: all 0.2s ease;
+}
+
+.desktop-1 .playlists:hover {
+  transform: scale(1.1);
+}
+
+.desktop-1 .overlap-group3 {
+  padding: 4px 38px;
+}
+
+.desktop-1 .playlists-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 53px;
+  text-align: center;
+  width: 424px;
+}
+
+.desktop-1 .overlap {
+  align-items: flex-start;
+  background-color: var(--mine-shaft);
+  display: flex;
+  height: 62px;
+  min-width: 500px;
+}

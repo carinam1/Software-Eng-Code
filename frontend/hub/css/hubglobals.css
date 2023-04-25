@@ -6,12 +6,6 @@
   font-weight: 700;
   src: url("../fonts/Century Gothic") format("truetype");
 }
-@font-face {
-  font-family: "Century Gothic-Regular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/Century Gothic.ttf") format("truetype");
-}
 
 
 .screen a {

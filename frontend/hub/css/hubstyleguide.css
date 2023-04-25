@@ -1,0 +1,16 @@
+:root { 
+  --black: #000000;
+  --mine-shaft: #2f2f2fcc;
+  --white: #ffffff;
+ 
+  --font-size-m: 40px;
+ 
+  --font-family-century_gothic-bold: "Century Gothic-Bold", Helvetica;
+}
+.centurygothic-bold-white-40px {
+  color: var(--white);
+  font-family: var(--font-family-century_gothic-bold);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 700;
+}
