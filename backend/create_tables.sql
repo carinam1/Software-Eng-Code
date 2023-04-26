@@ -52,3 +52,11 @@ CREATE TABLE IF NOT EXISTS user_workout_plans (
     frequency INT,
     FOREIGN KEY (user_id) REFERENCES user_metrics(id)
 );
+CREATE TABLE foods (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  food_name VARCHAR(255),
+  calories FLOAT,
+  protein FLOAT,
+  fat FLOAT,
+  carbs FLOAT
+);

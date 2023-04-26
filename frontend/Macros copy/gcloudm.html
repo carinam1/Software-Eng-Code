@@ -69,15 +69,34 @@
             console.log("Daily Macros:", dailyMacros);
         });
             // Event listener for the 'Add to Log' button
-            document.getElementById("add-to-log").addEventListener("click", () => {
-            const foodName = food.description;
-            const caloriesValue = parseFloat(calories.split(" ")[0]);
-            const proteinValue = parseFloat(protein.split(" ")[0]);
-            const fatValue = parseFloat(fat.split(" ")[0]);
-            const carbsValue = parseFloat(carbohydrate.split(" ")[0]);
+            document.getElementById("add-to-log").addEventListener("click", async () => {
+        // Update daily macros
+        dailyMacros.calories += parseFloat(calories.split(" ")[0]);
+        dailyMacros.protein += parseFloat(protein.split(" ")[0]);
+        dailyMacros.fat += parseFloat(fat.split(" ")[0]);
+        dailyMacros.carbohydrates += parseFloat(carbohydrate.split(" ")[0]);
 
-            sendFoodToDatabase(foodName, caloriesValue, proteinValue, fatValue, carbsValue);
-        });
+        // Update daily calories display
+        document.getElementById("daily-calories").innerHTML = `Total Daily Calories: ${dailyMacros.calories.toFixed(2)}`;
+        document.getElementById("daily-protein").innerHTML = `Total Daily Protein: ${dailyMacros.protein.toFixed(2)} g`;
+        document.getElementById("daily-fat").innerHTML = `Total Daily Fat: ${dailyMacros.fat.toFixed(2)} g`;
+        document.getElementById("daily-carbohydrates").innerHTML = `Total Daily Carbohydrates: ${dailyMacros.carbohydrates.toFixed(2)} g`;
+
+        // Add to log table
+        addToLogTable(food.description, calories, protein, fat, carbohydrate);
+
+        // Send data to the Cloud Function
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ food_name: food.description, calories, protein, fat, carbs: carbohydrate })
+        };
+
+        const response = await fetch('https://us-central1-nuyu-381420.cloudfunctions.net/addFood', requestOptions);
+        const result = await response.json();
+        console.log(result);
+    });
+
     </script>
     </div>
 </body>
