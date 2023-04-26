@@ -32,7 +32,6 @@ function submitText() {
                     .then(data => {
                         console.log(data);
                         food = data;
-                        //let portions = data.foodPortions;
                         let nutrients = data.foodNutrients;
                         
                         // Get nutrient values
@@ -49,46 +48,10 @@ function submitText() {
                             <p>Fat: ${fat}</p>
                             <p>Carbohydrates: ${carbohydrate}</p>
                         `;
-
-                        // Send the food data to the Cloud Function
-                        fetch('https://us-central1-nuyu-381420.cloudfunctions.net/addFood', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                foodName: food.description,
-                                calories: parseFloat(calories.split(' ')[0]),
-                                protein: parseFloat(protein.split(' ')[0]),
-                                fat: parseFloat(fat.split(' ')[0]),
-                                carbs: parseFloat(carbohydrate.split(' ')[0])
-                            }),
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log("Food added successfully");
-                                addToLogTable(selectedId, food.description, calories, protein, fat, carbohydrate);
-                            } else {
-                                console.error("Error adding food to the database");
-                            }
-                            return response.json();
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log("Food added successfully");
-                                addToLogTable(selectedId, food.description, calories, protein, fat, carbohydrate);
-                            } else {
-                                console.error("Error adding food to the database");
-                            }
-                            return response.json();
-                        })
-                        .then(data => console.log(data))
-                        .catch(error => console.error(error));
                     });
             };
     });
 }
-
 
 function getNutrient(nutrientData, nutrientName) {
     let temp = nutrientData.filter(a => a.nutrient.name === nutrientName)[0];
@@ -106,7 +69,8 @@ function addToLogTable(foodId, foodName, calories, protein, fat, carbs) {
     
     row.dataset.foodId = foodId; // Add the foodId as a data attribute
 
-    row.insertCell().innerHTML = foodName;
+    const nameCell = row.insertCell();
+    nameCell.innerHTML = foodName;
     row.insertCell().innerHTML = calories;
     row.insertCell().innerHTML = protein;
     row.insertCell().innerHTML = fat;
@@ -115,7 +79,7 @@ function addToLogTable(foodId, foodName, calories, protein, fat, carbs) {
     const removeButton = document.createElement("button");
     removeButton.innerHTML = "Remove";
     removeButton.onclick = function() {
-        removeFromLog(row, calories, protein, fat, carbs);
+        removeFromLog(row, foodId, calories, protein, fat, carbs);
     };
     const removeCell = row.insertCell();
     removeButton.onclick = async function () {
@@ -124,6 +88,7 @@ function addToLogTable(foodId, foodName, calories, protein, fat, carbs) {
     removeCell.className = "remove-cell";
     removeCell.appendChild(removeButton);
 }
+
 
 async function removeFromLog(row, foodId, calories, protein, fat, carbs) {
     dailyMacros.calories -= parseFloat(calories.split(" ")[0]);
@@ -143,4 +108,3 @@ async function removeFromLog(row, foodId, calories, protein, fat, carbs) {
       console.error("Error removing food from the database");
     }
 }
-  
