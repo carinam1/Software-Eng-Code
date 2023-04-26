@@ -1,7 +1,7 @@
 const mysql = require('mysql');
+const functions = require('firebase-functions');
 
 const pool = mysql.createPool({
-  // Replace the placeholders with your Google Cloud SQL connection information
   connectionLimit: 1,
   user: 'root',
   password: "dTO<A8Z'J1,[iG)v",
@@ -22,3 +22,20 @@ exports.addFood = (req, res) => {
     }
   });
 };
+
+exports.removeFood = functions.https.onRequest(async (request, response) => {
+    const foodId = request.body.food_id;
+
+    if (!foodId) {
+        response.status(400).send('No food id provided');
+        return;
+    }
+
+    try {
+        await pool.query('DELETE FROM foods WHERE id = ?', [foodId]);
+        response.status(200).send({ message: 'Food entry removed successfully' });
+    } catch (error) {
+        console.error('removeFood', error);
+        response.status(500).send('Error removing food entry');
+    }
+});

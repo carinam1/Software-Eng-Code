@@ -1,0 +1,8 @@
+{
+    "name": "food-log-cloud-function",
+    "version": "1.0.0",
+    "dependencies": {"firebase-functions": "^3.18.0",
+      "mysql": "^2.18.1"
+    }
+  }
+  
