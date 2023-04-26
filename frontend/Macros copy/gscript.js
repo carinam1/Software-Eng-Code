@@ -11,6 +11,7 @@ function submitText() {
     fetch('https://api.nal.usda.gov/fdc/v1/foods/search?api_key=vJbx4iLpZCsafpmVwdAFzQciR9a0LKp782rPLmYn&query='+text)
         .then(response => response.json())
         .then(data => {
+            // Display the results on the page
             let foods = data.foods;
 
             let select = document.getElementById('data-select');
@@ -24,18 +25,23 @@ function submitText() {
             let container = document.getElementById('data-container');
 
             select.onchange = function() {
+                // Get the selected option's value
                 let selectedId = this.value;
                 fetch("https://api.nal.usda.gov/fdc/v1/food/"+selectedId+"?api_key=vJbx4iLpZCsafpmVwdAFzQciR9a0LKp782rPLmYn")
                     .then(response => response.json())
                     .then(data => {
+                        console.log(data);
                         food = data;
+                        //let portions = data.foodPortions;
                         let nutrients = data.foodNutrients;
-
+                        
+                        // Get nutrient values
                         calories = getNutrient(nutrients, 'Energy');
                         protein = getNutrient(nutrients, 'Protein');
                         fat = getNutrient(nutrients, 'Total lipid (fat)');
                         carbohydrate = getNutrient(nutrients, 'Carbohydrate, by difference');
-
+                
+                        // Update container's innerHTML
                         container.innerHTML = `
                             <h2>${food.description}</h2>
                             <p>Calories: ${calories}</p>
@@ -45,17 +51,25 @@ function submitText() {
                         `;
 
                         // Send the food data to the Cloud Function
-                        sendFoodToDatabase(
-                            food.description,
-                            parseFloat(calories.split(' ')[0]),
-                            parseFloat(protein.split(' ')[0]),
-                            parseFloat(fat.split(' ')[0]),
-                            parseFloat(carbohydrate.split(' ')[0])
-                        );
+                        fetch('https://us-central1-nuyu-381420.cloudfunctions.net/addFood', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                foodName: food.description,
+                                calories: parseFloat(calories.split(' ')[0]),
+                                protein: parseFloat(protein.split(' ')[0]),
+                                fat: parseFloat(fat.split(' ')[0]),
+                                carbs: parseFloat(carbohydrate.split(' ')[0])
+                            }),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.error(error));
                     });
             };
-    })
-    .catch(error => console.error(error));
+    });
 }
 
 
@@ -95,29 +109,30 @@ function addToLogTable(foodId, foodName, calories, protein, fat, carbs) {
     removeCell.appendChild(removeButton);
 }
 
-async function sendFoodToDatabase(foodName, calories, protein, fat, carbs) {
+async function sendFoodToDatabase(food_name, calories, protein, fat, carbs) {
     const requestBody = {
-      foodName,
-      calories,
-      protein,
-      fat,
-      carbs,
+        food_name,
+        calories,
+        protein,
+        fat,
+        carbs
     };
-  
+
     const response = await fetch("https://us-central1-nuyu-381420.cloudfunctions.net/addFood", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
     });
-  
+
     if (response.ok) {
-      console.log("Food added successfully");
+        console.log("Food added successfully");
     } else {
-      console.error("Error adding food to the database");
+        console.error("Error adding food to the database");
     }
-  }
+}
+
 
 async function removeFoodFromDatabase(foodId) {
     const requestBody = {
