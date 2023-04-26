@@ -49,7 +49,8 @@
             carbohydrates: 0
         };
 
-        document.getElementById("add-to-log").addEventListener("click", () => {
+        // Event listener for the 'Add to Log' button
+        document.getElementById("add-to-log").addEventListener("click", async () => {
             // Update daily macros
             dailyMacros.calories += parseFloat(calories.split(" ")[0]);
             dailyMacros.protein += parseFloat(protein.split(" ")[0]);
@@ -65,37 +66,17 @@
             // Add to log table
             addToLogTable(food.description, calories, protein, fat, carbohydrate);
 
-            // Display daily macros
-            console.log("Daily Macros:", dailyMacros);
+            // Send data to the Cloud Function
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ food_name: food.description, calories, protein, fat, carbs: parseFloat(carbohydrate.split(" ")[0]) })
+            };
+
+            const response = await fetch('https://us-central1-nuyu-381420.cloudfunctions.net/addFood', requestOptions);
+            const result = await response.json();
+            console.log(result);
         });
-            // Event listener for the 'Add to Log' button
-            document.getElementById("add-to-log").addEventListener("click", async () => {
-        // Update daily macros
-        dailyMacros.calories += parseFloat(calories.split(" ")[0]);
-        dailyMacros.protein += parseFloat(protein.split(" ")[0]);
-        dailyMacros.fat += parseFloat(fat.split(" ")[0]);
-        dailyMacros.carbohydrates += parseFloat(carbohydrate.split(" ")[0]);
-
-        // Update daily calories display
-        document.getElementById("daily-calories").innerHTML = `Total Daily Calories: ${dailyMacros.calories.toFixed(2)}`;
-        document.getElementById("daily-protein").innerHTML = `Total Daily Protein: ${dailyMacros.protein.toFixed(2)} g`;
-        document.getElementById("daily-fat").innerHTML = `Total Daily Fat: ${dailyMacros.fat.toFixed(2)} g`;
-        document.getElementById("daily-carbohydrates").innerHTML = `Total Daily Carbohydrates: ${dailyMacros.carbohydrates.toFixed(2)} g`;
-
-        // Add to log table
-        addToLogTable(food.description, calories, protein, fat, carbohydrate);
-
-        // Send data to the Cloud Function
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ food_name: food.description, calories, protein, fat, carbs: carbohydrate })
-        };
-
-        const response = await fetch('https://us-central1-nuyu-381420.cloudfunctions.net/addFood', requestOptions);
-        const result = await response.json();
-        console.log(result);
-    });
 
     </script>
     </div>
