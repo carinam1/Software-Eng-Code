@@ -15,8 +15,9 @@ CREATE TABLE IF NOT EXISTS user_metrics (
     weight DECIMAL(5,2),
     height DECIMAL(5,2),
     energy_level_id INT
-    CREATE INDEX idx_email ON user_metrics(email);
 );
+
+CREATE INDEX idx_email ON user_metrics(email);
 
 CREATE TABLE IF NOT EXISTS social_media (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,9 +29,10 @@ CREATE TABLE IF NOT EXISTS social_media (
     verified BOOLEAN,
     follower_count INT,
     following_count INT
-    ALTER TABLE social_media
-    ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
 );
+
+ALTER TABLE social_media
+ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
 
 CREATE TABLE IF NOT EXISTS user_macro_nutrition (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,9 +42,10 @@ CREATE TABLE IF NOT EXISTS user_macro_nutrition (
     protein DECIMAL(5,2),
     carbs DECIMAL(5,2),
     fat DECIMAL(5,2)
-    ALTER TABLE user_macro_nutrition
-    ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
 );
+
+ALTER TABLE user_macro_nutrition
+ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
 
 CREATE TABLE IF NOT EXISTS user_workout_plans (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -52,6 +55,7 @@ CREATE TABLE IF NOT EXISTS user_workout_plans (
     workout_name VARCHAR(100),
     description TEXT,
     frequency INT
-    ALTER TABLE user_workout_plans
-    ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
 );
+
+ALTER TABLE user_workout_plans
+ADD FOREIGN KEY (user_id) REFERENCES user_metrics(id);
