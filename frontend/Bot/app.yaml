@@ -1,0 +1,10 @@
+runtime: python39
+entrypoint: gunicorn -w 4 -k gthread app:app
+instance_class: F1
+handlers:
+- url: /.*
+  static_files: index.html
+  upload: index.html
+- url: /(.*\.(html|css|js|png|jpg|gif|ico|svg|woff|woff2|ttf))
+  static_files: \1
+  upload: .+\.(html|css|js|png|jpg|gif|ico|svg|woff|woff2|ttf)$

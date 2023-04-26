@@ -20,18 +20,12 @@ send.addEventListener('click', async () => {
 });
 
 async function fetchChatbotResponse(prompt) {
-  const apiKey = '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';
-  const url = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+  const url = '/chatbot';
   const headers = {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`
   };
   const data = {
-    prompt: `Health and fitness chatbot:\n\nUser: ${prompt}\nBot:`,
-    max_tokens: 50,
-    n: 1,
-    stop: null,
-    temperature: 0.8
+    message: prompt,
   };
 
   try {
@@ -42,7 +36,7 @@ async function fetchChatbotResponse(prompt) {
     });
 
     const result = await response.json();
-    return result.choices[0].text.trim();
+    return result.response;
   } catch (error) {
     console.error(error);
     return 'Error fetching chatbot response';

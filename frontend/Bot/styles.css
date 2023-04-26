@@ -1,0 +1,78 @@
+body {
+    background-color: #272727;
+    font-family: "Century Gothic", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    background-color: #005B00;
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  input,
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #272727;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #444444;
+  }
+  
+  .messages {
+    background-color: white;
+    font-family: "Century Gothic", sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: auto;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .user-message,
+  .bot-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .user-message {
+    background-color: #005B00;
+    color: white;
+  }
+  
+  .bot-message {
+    background-color: #272727;
+    color: white;
+    font-family: "Century Gothic", sans-serif;
+  }
+  h1 {
+    position: absolute;
+    font-family: "Century Gothic", sans-serif;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+  }
+  
