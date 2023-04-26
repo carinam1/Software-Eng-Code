@@ -64,14 +64,30 @@ function submitText() {
                                 'Content-Type': 'application/json'
                             }
                         })
-                        .then(response => response.json())
+                        .then(response => {
+                            if (response.ok) {
+                                console.log("Food added successfully");
+                                addToLogTable(selectedId, food.description, calories, protein, fat, carbohydrate);
+                            } else {
+                                console.error("Error adding food to the database");
+                            }
+                            return response.json();
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log("Food added successfully");
+                                addToLogTable(selectedId, food.description, calories, protein, fat, carbohydrate);
+                            } else {
+                                console.error("Error adding food to the database");
+                            }
+                            return response.json();
+                        })
                         .then(data => console.log(data))
                         .catch(error => console.error(error));
                     });
             };
     });
 }
-
 
 
 function getNutrient(nutrientData, nutrientName) {
@@ -109,53 +125,7 @@ function addToLogTable(foodId, foodName, calories, protein, fat, carbs) {
     removeCell.appendChild(removeButton);
 }
 
-async function sendFoodToDatabase(food_name, calories, protein, fat, carbs) {
-    const requestBody = {
-        food_name,
-        calories,
-        protein,
-        fat,
-        carbs
-    };
-
-    const response = await fetch("https://us-central1-nuyu-381420.cloudfunctions.net/addFood", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-    });
-
-    if (response.ok) {
-        console.log("Food added successfully");
-    } else {
-        console.error("Error adding food to the database");
-    }
-}
-
-
-async function removeFoodFromDatabase(foodId) {
-    const requestBody = {
-      food_id: foodId,
-    };
-  
-    const response = await fetch('https://us-central1-nuyu-381420.cloudfunctions.net/removeFood', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    });
-  
-    if (response.ok) {
-      console.log('Food removed successfully');
-    } else {
-      console.error('Error removing food from the database');
-    }
-  }
-  
-
-  async function removeFromLog(row, foodId, calories, protein, fat, carbs) {
+async function removeFromLog(row, foodId, calories, protein, fat, carbs) {
     dailyMacros.calories -= parseFloat(calories.split(" ")[0]);
     dailyMacros.protein -= parseFloat(protein.split(" ")[0]);
     dailyMacros.fat -= parseFloat(fat.split(" ")[0]);
@@ -172,5 +142,5 @@ async function removeFoodFromDatabase(foodId) {
     } catch (error) {
       console.error("Error removing food from the database");
     }
-  }
+}
   
