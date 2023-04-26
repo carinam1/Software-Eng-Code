@@ -11,6 +11,8 @@ const pool = mysql.createPool({
 
 exports.addFood = (req, res) => {
   const { foodName, calories, protein, fat, carbs } = req.body;
+  console.log(`Received data: Food Name - ${foodName}, Calories - ${calories}, Protein - ${protein}, Fat - ${fat}, Carbs - ${carbs}`);
+  
   const query = 'INSERT INTO foods (food_name, calories, protein, fat, carbs) VALUES (?, ?, ?, ?, ?)';
   
   pool.query(query, [foodName, calories, protein, fat, carbs], (err, result) => {
