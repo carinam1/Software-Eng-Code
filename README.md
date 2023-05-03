@@ -1,5 +1,9 @@
 # Software-Eng-Code
 
+## Google Cloud Info
+
+- Files committed to the main branch are ran on a google cloud server virtual server, which is interfaced through our SQL module. Traffic operates through JSON files and a JavaScript interpreter file. Said files are located within this repository.
+
 ## Backend Setup
 
 1. Make sure you have [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed.
